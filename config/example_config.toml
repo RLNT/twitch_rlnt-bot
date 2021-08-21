@@ -1,0 +1,45 @@
+# Make sure to rename this file to config.toml in order for it to work!
+
+[login]
+    # your bot's username
+    username = "myawesomebot"
+    # your bot's access token
+    token = "1n2b192nb891n2b9n1v912v9n"
+
+[general]
+    # the prefix for commands
+    prefix = "!"
+    # the Twitch channels to join
+    channels = ["myawesomechannel"]
+    # whether to reconnect to Twitch when disconnected
+    auto_reconnect = true
+
+[logging]
+    # whether to log chat messages
+    messages = true
+    # whether to log command usage
+    commands = true
+
+[imgur]
+    # the Imgur album ID to upload images to
+    album_id = "aADK31l"
+    # the Imgur client ID to use
+    client_id = "0fn120n8gn0a9s"
+    # the Imgur client secret to use
+    client_secret = "pen897b9678nvna7onv8a4van4w8w7698763"
+
+[commands.imgur]
+    # the users that can use the imgur command
+    whitelist = ["awesomeuser"]
+    # the users that can use whitelist command for this command
+    admins = ["awesomeuser"]
+
+[commands.reload]
+    # the users that can use the reload command
+    whitelist = ["awesomeuser"]
+
+    # all commands are loaded dynamically and enabled by default
+    # if you want to explicetely disable a command, you can do it like this:
+    # [commands.ping]
+    #     # whether to enable the ping command
+    #     enabled = false
