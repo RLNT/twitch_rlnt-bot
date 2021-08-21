@@ -1,3 +1,5 @@
+# **RLNT Bot** [![Workflow Status][workflow_status_badge]][workflow_status_link] [![Total Downloads][total_downloads_badge]][total_downloads_link] [![License][license_badge]][license]
+
 > A [Twitch] chat bot for private use with utility functions implemented on demand.
 
 - [Discord]
