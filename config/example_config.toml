@@ -38,6 +38,10 @@
     # the users that can use the reload command
     whitelist = ["awesomeuser"]
 
+[commands.stop]
+    # the users that can use the stop command
+    whitelist = ["damnrelentless"]
+
     # all commands are loaded dynamically and enabled by default
     # if you want to explicetely disable a command, you can do it like this:
     # [commands.ping]
