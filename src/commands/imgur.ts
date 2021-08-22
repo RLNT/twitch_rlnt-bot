@@ -87,7 +87,8 @@ async function whitelist(channel: string, argument: string): Promise<void> {
                 return;
             }
 
-            config.commands.imgur.whitelist = whitelist.splice(index, 1);
+            whitelist.splice(index, 1);
+            config.commands.imgur.whitelist = whitelist;
             await writeConfig();
             chat(channel, `${user} was removed from the whitelist!`);
             logger.command(`>${commandName} | ${user} was removed from the Imgur whitelist!`);
