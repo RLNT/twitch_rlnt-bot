@@ -6,7 +6,7 @@ import { chat, isWhitelisted } from '@utils/helpers.js';
 import { ChatUserstate } from 'tmi.js';
 
 const commandRegex = new RegExp(
-    /^(https:\/\/i.imgur.com\/[a-zA-Z\d]+\.(?:png|jpg|jpeg))(\W+)?(?:(\d{1,2})[.-](\d{1,2})[.-](\d{4}|\d{2})$)?/
+    /^(https:\/\/i.imgur.com\/[a-z\d]+\.(?:png|jpg|jpeg))( )?(?:(\d{1,2})[.-](\d{1,2})[.-](\d{4}|\d{2})$)?/i
 );
 
 export const command: Command = {
