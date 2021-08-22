@@ -1,8 +1,8 @@
+import { logger } from '@/startup.js';
 import { Command } from '@internals/commandhandler.js';
+import { config, writeConfig } from '@utils/config';
 import { chat, isWhitelisted } from '@utils/helpers.js';
 import { ChatUserstate } from 'tmi.js';
-import { logger } from '../startup';
-import { config, writeConfig } from '../utils/config';
 
 export const command: Command = {
     name: 'restart',

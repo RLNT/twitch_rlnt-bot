@@ -1,5 +1,5 @@
-import { config } from '@/utils/config.js';
 import { Command } from '@internals/commandhandler.js';
+import { config } from '@utils/config.js';
 import { chat } from '@utils/helpers.js';
 
 export const command: Command = {
