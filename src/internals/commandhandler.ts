@@ -2,7 +2,6 @@ import { logger } from '@/startup.js';
 import { client } from '@internals/clienthandler.js';
 import { config } from '@utils/config.js';
 import { Collection, commandEnabled } from '@utils/helpers.js';
-import { readdirSync } from 'fs';
 import { ChatUserstate } from 'tmi.js';
 
 /** The command type representing the default structure of a command. */
@@ -15,6 +14,7 @@ export type Command = {
     execute(channel?: string, sender?: ChatUserstate, argument?: string | undefined): Promise<void>;
 };
 
+const commandList = ['album', 'help', 'imgur', 'info', 'ping', 'reload'];
 const commands = new Collection<string, Command>();
 const cooldowns = new Collection<string, Collection<string, number>>();
 
@@ -27,10 +27,11 @@ export async function loadCommands(): Promise<void> {
     logger.info('Loading commands...');
 
     // load all command files from the command directory
-    const commandFiles = readdirSync(`${__dirname}/../commands`).filter(file => file.endsWith('.ts'));
+    // temporarily disabled dynamic command loading because exe compiling is not compatible
+    // const commandFiles = readdirSync(`${__dirname}/../commands`).filter(file => file.endsWith('.ts'));
 
     // register each command file to the available commands
-    commandFiles.forEach(file => {
+    commandList.forEach(file => {
         try {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const { command } = require(`${__dirname}/../commands/${file}`) as { command: Command };
