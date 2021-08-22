@@ -26,11 +26,7 @@ export const command: Command = {
             return;
         }
 
-        const [raw, url, whitespace, day, month, year] = args.match(commandRegex) || [];
-        if (!raw) {
-            chat(channel, `Arguments are invalid! Try ${config.general.prefix}help ${this.name}`);
-            return;
-        }
+        const [, url, whitespace, day, month, year] = args.match(commandRegex) || [];
         if (!url) {
             chat(channel, 'You entered an invalid URL!');
             return;
