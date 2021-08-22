@@ -33,6 +33,7 @@ type Config = {
         readonly reload?: CommandConfig | undefined;
         readonly restart?: CommandConfig | undefined;
         readonly stop?: CommandConfig | undefined;
+        readonly vanish?: CommandConfig | undefined;
         readonly whitelist?: CommandConfig | undefined;
         [command: string]: CommandConfig | undefined;
     };
