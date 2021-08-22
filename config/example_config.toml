@@ -52,3 +52,4 @@
 # Do not edit anything below!
 # This is used to store some persistent data for the bot and it's automated.
 [persistent]
+    restartOrigin = ""

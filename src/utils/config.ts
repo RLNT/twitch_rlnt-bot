@@ -37,7 +37,7 @@ type Config = {
         [command: string]: CommandConfig | undefined;
     };
     persistent: {
-        restartOrigin?: string;
+        restartOrigin: string;
     };
 };
 

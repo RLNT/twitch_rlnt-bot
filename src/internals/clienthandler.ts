@@ -37,7 +37,7 @@ export async function registerEvents(): Promise<void> {
         // send a message to the channel the restart was triggered from
         if (config.persistent.restartOrigin) {
             chat(config.persistent.restartOrigin, 'Successfully restarted!');
-            config.persistent = {};
+            config.persistent.restartOrigin = '';
             await writeConfig();
         }
     });
