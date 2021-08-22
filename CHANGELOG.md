@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning].
 - /
 
 
+## [1.2.1] - 2021-08-23
+
+### Added
+- proper logging to the vanish command
+
+
 ## [1.2.0] - 2021-08-22
 
 ### Added
@@ -54,7 +60,8 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.0...HEAD
+[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.0.0...v1.0.1

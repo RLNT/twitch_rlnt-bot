@@ -1,3 +1,4 @@
+import { logger } from '@/startup.js';
 import { client } from '@internals/clienthandler';
 import { Command } from '@internals/commandhandler.js';
 import { chat } from '@utils/helpers.js';
@@ -17,6 +18,14 @@ export const command: Command = {
             chat(channel, "Can't timeout the broadcaster. BRUH");
             return;
         }
-        chat(channel, `/timeout ${sender.username} 1s`);
+
+        client
+            .timeout(channel, sender.username || '', 1)
+            .then(() => {
+                logger.command(`>${this.name} | ${sender.username} was vanished!`);
+            })
+            .catch(err => {
+                logger.error(`${sender.username} couldn't be vanished!`, err);
+            });
     }
 };
