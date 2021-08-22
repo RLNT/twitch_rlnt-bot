@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning].
 - /
 
 
+## [1.2.0] - 2021-08-22
+
+### Added
+- restart command
+  - stops the whole bot process and allows systemd to restart it
+  - will post restart notification in the channel the command was issued from
+  - uses a whitelist
+- vanish command
+  - timeouts the command sender for a second
+  - outputs different messages if the sender is moderator or broadcaster
+- whitelist command
+  - used to add/remove/list users to/from a specific command whitelist
+  - uses a whitelist
+- mod requirement checks for commands
+
+### Deprecated
+- admin config field in the imgur command
+
+
 ## [1.1.0] - 2021-08-22
 
 ### Added
@@ -35,7 +54,8 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.1.0...HEAD
+[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/RLNT/twitch_rlnt-bot/releases/tag/v1.0.

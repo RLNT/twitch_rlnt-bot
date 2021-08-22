@@ -6,6 +6,7 @@ import { ChatUserstate } from 'tmi.js';
 export const command: Command = {
     name: 'help',
     description: 'Gives further information about specific commands.',
+    modRequired: false,
     usage: 'help [command]',
     aliases: ['commands', 'cmds'],
     async execute(channel: string, _sender: ChatUserstate, argument: string | undefined): Promise<void> {
