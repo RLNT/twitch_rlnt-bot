@@ -31,15 +31,20 @@ type Config = {
         readonly info?: CommandConfig | undefined;
         readonly ping?: CommandConfig | undefined;
         readonly reload?: CommandConfig | undefined;
+        readonly restart?: CommandConfig | undefined;
         readonly stop?: CommandConfig | undefined;
+        readonly vanish?: CommandConfig | undefined;
+        readonly whitelist?: CommandConfig | undefined;
         [command: string]: CommandConfig | undefined;
+    };
+    persistent: {
+        restartOrigin: string;
     };
 };
 
 type CommandConfig = {
     enabled?: boolean;
     whitelist?: string[];
-    readonly admins?: string[];
 };
 
 export let config: Config;

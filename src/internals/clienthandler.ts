@@ -1,6 +1,7 @@
 import { logger } from '@/startup.js';
 import { handleCommand } from '@internals/commandhandler.js';
-import { config } from '@utils/config.js';
+import { config, writeConfig } from '@utils/config.js';
+import { chat } from '@utils/helpers';
 import { Client } from 'tmi.js';
 
 export let client: Client;
@@ -33,6 +34,12 @@ export async function registerEvents(): Promise<void> {
     // registers the connected event to log a simple message
     client.once('connected', async () => {
         logger.success('Twitch client connected!');
+        // send a message to the channel the restart was triggered from
+        if (config.persistent.restartOrigin) {
+            chat(config.persistent.restartOrigin, 'Successfully restarted!');
+            config.persistent.restartOrigin = '';
+            await writeConfig();
+        }
     });
 
     // registers the reconnect event to log a simple message
