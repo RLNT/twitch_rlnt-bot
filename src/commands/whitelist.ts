@@ -4,7 +4,7 @@ import { config, writeConfig } from '@utils/config.js';
 import { chat, getCommandWhitelist, isWhitelisted } from '@utils/helpers.js';
 import { ChatUserstate } from 'tmi.js';
 
-const commandRegex = new RegExp(/^([a-zA-Z]+)\W+(add|remove|list)\W*([a-zA-Z\d]+)?$/);
+const commandRegex = new RegExp(/^([a-z]+) (add|remove|list)? ?([a-z\d]+)?$/i);
 
 export const command: Command = {
     name: 'whitelist',
@@ -22,13 +22,13 @@ export const command: Command = {
             return;
         }
 
-        const [raw, command, action, user] = args.match(commandRegex) || [];
-        if (!raw || !command) {
+        const [, command, action, user] = args.match(commandRegex) || [];
+        if (!command) {
             chat(channel, `Arguments are invalid! Try ${config.general.prefix}help ${this.name}`);
             return;
         }
         if (!action) {
-            chat(channel, 'Please specify an action!');
+            chat(channel, 'The action you specified is invalid! Validactions are: add, remove & list');
             return;
         }
         if (action !== 'list' && !user) {
@@ -43,7 +43,7 @@ export const command: Command = {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         if (!config.commands[command]!.whitelist) config.commands[command]!.whitelist = [];
 
-        switch (action) {
+        switch (action.toLowerCase()) {
             case 'add':
                 if (!user) return;
                 if (isWhitelisted(user, command, whitelist)) {
