@@ -10,10 +10,6 @@ export const command: Command = {
     modRequired: true,
     aliases: ['v', 'poof', 'hide'],
     async execute(channel: string, sender: ChatUserstate): Promise<void> {
-        if (client.isMod(channel, sender.username || '')) {
-            chat(channel, 'Try /unmod first. Okayge');
-            return;
-        }
         if (channel.includes(sender.username || '')) {
             chat(channel, "Can't timeout the broadcaster. BRUH");
             return;
@@ -25,6 +21,10 @@ export const command: Command = {
                 logger.command(`>${this.name} | ${sender.username} was vanished!`);
             })
             .catch(err => {
+                if (err === 'bad_timeout_mod') {
+                    chat(channel, 'Try /unmod first. Okayge');
+                    return;
+                }
                 logger.error(`${sender.username} couldn't be vanished!`, err);
             });
     }
