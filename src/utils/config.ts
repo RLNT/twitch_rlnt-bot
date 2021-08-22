@@ -31,6 +31,7 @@ type Config = {
         readonly info?: CommandConfig | undefined;
         readonly ping?: CommandConfig | undefined;
         readonly reload?: CommandConfig | undefined;
+        readonly stop?: CommandConfig | undefined;
         [command: string]: CommandConfig | undefined;
     };
 };
