@@ -6,6 +6,7 @@ import { logger } from '../startup';
 export const command: Command = {
     name: 'stop',
     description: 'Stops the bot.',
+    modRequired: false,
     async execute(channel: string, sender: ChatUserstate): Promise<void> {
         if (!isListed(sender, this.name, 'whitelist')) {
             chat(channel, 'You are not whitelisted for this command!');

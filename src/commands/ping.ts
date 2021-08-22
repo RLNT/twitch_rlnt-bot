@@ -5,6 +5,7 @@ import { chat } from '@utils/helpers.js';
 export const command: Command = {
     name: 'ping',
     description: 'Pings the bot and informs about the latency.',
+    modRequired: false,
     aliases: ['pong'],
     async execute(channel: string): Promise<void> {
         client

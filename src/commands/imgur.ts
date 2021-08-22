@@ -15,6 +15,7 @@ const whitelistRegex = new RegExp(/^whitelist\W*(?:(add|remove|list)\W*)?([a-z]+
 export const command: Command = {
     name: commandName,
     description: 'Uploads an image to the retard Imgur collection. When no date is defined, it will use todays date.',
+    modRequired: false,
     cooldown: 5,
     usage: 'imgur <direct Imgur url> [date]',
     aliases: ['img'],
