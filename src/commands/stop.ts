@@ -6,7 +6,6 @@ import { logger } from '../startup';
 export const command: Command = {
     name: 'stop',
     description: 'Stops the bot.',
-    aliases: ['restart'],
     async execute(channel: string, sender: ChatUserstate): Promise<void> {
         if (!isListed(sender, this.name, 'whitelist')) {
             chat(channel, 'You are not whitelisted for this command!');
@@ -14,6 +13,7 @@ export const command: Command = {
         }
         chat(channel, 'Stopping...');
         logger.command(`>${this.name} | ${sender.username} stopped the bot!`);
-        process.exit(0);
+        // stop the process with an error code so systemd does not restart it
+        process.exit(1);
     }
 };

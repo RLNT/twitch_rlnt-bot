@@ -38,6 +38,10 @@
     # the users that can use the reload command
     whitelist = ["awesomeuser"]
 
+[commands.restart]
+    # the users that can use the restart command
+    whitelist = ["awesomeuser"]
+
 [commands.stop]
     # the users that can use the stop command
     whitelist = ["damnrelentless"]
@@ -47,3 +51,7 @@
     # [commands.ping]
     #     # whether to enable the ping command
     #     enabled = false
+
+# Do not edit anything below!
+# This is used to store some persistent data for the bot and it's automated.
+[persistent]
