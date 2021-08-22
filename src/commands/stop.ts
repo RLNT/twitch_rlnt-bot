@@ -1,5 +1,5 @@
 import { Command } from '@internals/commandhandler.js';
-import { chat, isListed } from '@utils/helpers.js';
+import { chat, isWhitelisted } from '@utils/helpers.js';
 import { ChatUserstate } from 'tmi.js';
 import { logger } from '../startup';
 
@@ -8,7 +8,7 @@ export const command: Command = {
     description: 'Stops the bot.',
     modRequired: false,
     async execute(channel: string, sender: ChatUserstate): Promise<void> {
-        if (!isListed(sender, this.name, 'whitelist')) {
+        if (!isWhitelisted(sender, this.name)) {
             chat(channel, 'You are not whitelisted for this command!');
             return;
         }

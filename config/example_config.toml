@@ -31,8 +31,8 @@
 [commands.imgur]
     # the users that can use the imgur command
     whitelist = ["awesomeuser"]
-    # the users that can use whitelist command for this command
-    admins = ["awesomeuser"]
+    # if you want to explicetely disable a command, you can do it like this:
+    # enabled = false
 
 [commands.reload]
     # the users that can use the reload command
@@ -46,11 +46,8 @@
     # the users that can use the stop command
     whitelist = ["damnrelentless"]
 
-    # all commands are loaded dynamically and enabled by default
-    # if you want to explicetely disable a command, you can do it like this:
-    # [commands.ping]
-    #     # whether to enable the ping command
-    #     enabled = false
+[commands.whitelist]
+    whitelist = ["damnrelentless"]
 
 # Do not edit anything below!
 # This is used to store some persistent data for the bot and it's automated.

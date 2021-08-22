@@ -69,31 +69,33 @@ export function getWhitelist(command: string): string[] {
 }
 
 /**
- * Determines whether a user is listed for a specific command list.
+ * Determines whether a user is whitelisted for a specific command.
  *
  * @param sender The sender of the command
  * @param command The name of the command
- * @param type The type of the list to check
- * @returns True if listed, false otherwise
+ * @param list The optional list to check
+ * @returns True if whitelisted, false otherwise
  */
-export function isListed(sender: ChatUserstate | string, command: string, type: 'whitelist' | 'admins'): boolean {
-    const list = getListFromCommand(command, type);
+export function isWhitelisted(sender: ChatUserstate | string, command: string, list?: string[]): boolean {
+    if (!config.commands) return false;
+    if (!list) list = getCommandWhitelist(command);
+    if (list.length === 0) return false;
     const senderName = typeof sender === 'string' ? sender.toLowerCase() : (sender.username ?? '').toLowerCase();
-    if (list.length === 0 || senderName === '') return false;
+    if (senderName === '') return false;
     return list.includes(senderName);
 }
 
 /**
- * Gets a list of a command from the config.
+ * Gets the whitelist of a command from the config.
  *
  * @param command The name of the command
- * @param type The type of the list
- * @returns The list of the command or an empty array if not found
+ * @returns The whitelist of the command or an empty array if not found
  */
-export function getListFromCommand(command: string, type: 'whitelist' | 'admins'): string[] {
+export function getCommandWhitelist(command: string): string[] {
     if (!config.commands) return [];
-    const list = config.commands[command]?.[type] ?? [];
-    return list.length === 0 ? [] : list.map(name => name.toLowerCase());
+    const list = config.commands[command]?.whitelist ?? [];
+    if (list.length === 0) return [];
+    return list.map(name => name.toLowerCase());
 }
 
 /** Reloads configuration and all commands. */

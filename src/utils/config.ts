@@ -33,6 +33,7 @@ type Config = {
         readonly reload?: CommandConfig | undefined;
         readonly restart?: CommandConfig | undefined;
         readonly stop?: CommandConfig | undefined;
+        readonly whitelist?: CommandConfig | undefined;
         [command: string]: CommandConfig | undefined;
     };
     persistent: {
@@ -43,7 +44,6 @@ type Config = {
 type CommandConfig = {
     enabled?: boolean;
     whitelist?: string[];
-    readonly admins?: string[];
 };
 
 export let config: Config;
