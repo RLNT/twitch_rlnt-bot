@@ -11,7 +11,7 @@ export const command: Command = {
         client
             .ping()
             .then((time: number[]) => {
-                chat(channel, `Pong! Latency: ${time}ms`);
+                chat(channel, `Pong! Latency: ${time}s`);
             })
             .catch(err => {
                 chat(channel, 'Ping request timed out!');
