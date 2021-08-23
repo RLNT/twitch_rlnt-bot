@@ -7,6 +7,6 @@ export const command: Command = {
     modRequired: false,
     aliases: ['i', 'about', 'version'],
     async execute(channel: string): Promise<void> {
-        chat(channel, `I am a utility bot made by DamnRelentless! | Version: ${getVersion}`);
+        chat(channel, `I am a utility bot made by DamnRelentless! | Version: ${getVersion()}`);
     }
 };
