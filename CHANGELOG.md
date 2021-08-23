@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning].
 - /
 
 
+## [1.2.3] - 2021-08-23
+
+### Added
+- info command prefix bot
+
+### Fixed
+- version retrieval in info command
+
+
 ## [1.2.2] - 2021-08-23
 
 ### Fixed
