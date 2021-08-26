@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning].
 - /
 
 
+## [1.3.0] - 2021-08-26
+
+### Changed
+- imgur command to accept all direct image URLs
+  - only with https
+
+
 ## [1.2.4] - 2021-08-23
 
 ### Fixed
@@ -81,7 +88,8 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.4...HEAD
+[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.4...v1.3.0
 [1.2.4]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.3...v1.2.4
 [1.2.3]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.1...v1.2.2
