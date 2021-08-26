@@ -15,7 +15,7 @@ export const command: Command = {
     modRequired: false,
     cooldown: 5,
     usage: 'imgur <direct image url> [date]',
-    aliases: ['image', 'img'],
+    aliases: ['image', 'img', 'add'],
     async execute(channel: string, sender: ChatUserstate, args: string | undefined): Promise<void> {
         if (!isWhitelisted(sender, this.name)) {
             chat(channel, 'You are not whitelisted for this command!');
