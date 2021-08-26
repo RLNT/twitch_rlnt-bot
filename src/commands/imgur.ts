@@ -6,7 +6,7 @@ import { chat, isWhitelisted } from '@utils/helpers.js';
 import { ChatUserstate } from 'tmi.js';
 
 const commandRegex = new RegExp(
-    /^(https:\/\/i.imgur.com\/[a-z\d]+\.(?:png|jpg|jpeg))( )?(?:(\d{1,2})[.-](\d{1,2})[.-](\d{4}|\d{2})$)?/i
+    /^(https:\/\/(?:www\.)?[\w@:%.+~#=-]{1,256}\.[a-z\d()]{1,6}\b[\w()@:%+.~#?&/=-]*)( )?(?:(\d{1,2})[.-](\d{1,2})[.-](\d{4}|\d{2})$)?/i
 );
 
 export const command: Command = {
@@ -14,8 +14,8 @@ export const command: Command = {
     description: 'Uploads an image to the retard Imgur collection. When no date is defined, it will use todays date.',
     modRequired: false,
     cooldown: 5,
-    usage: 'imgur <direct Imgur url> [date]',
-    aliases: ['img'],
+    usage: 'imgur <direct image url> [date]',
+    aliases: ['image', 'img'],
     async execute(channel: string, sender: ChatUserstate, args: string | undefined): Promise<void> {
         if (!isWhitelisted(sender, this.name)) {
             chat(channel, 'You are not whitelisted for this command!');
@@ -28,7 +28,7 @@ export const command: Command = {
 
         const [, url, whitespace, day, month, year] = args.match(commandRegex) || [];
         if (!url) {
-            chat(channel, 'You entered an invalid URL!');
+            chat(channel, 'You entered an invalid URL! Make sure it is a direct image link and starts with https.');
             return;
         }
         if (whitespace && (!day || !month || !year)) {
@@ -51,8 +51,23 @@ export const command: Command = {
                 logger.command(`>${this.name} | Image was added to the Imgur album!`);
             })
             .catch(err => {
-                chat(channel, `Error uploading to imgur album! Status: ${err}`);
-                logger.command(`>${this.name} | Image couldn't be uploaded to the Imgur album!`, err);
+                if (typeof err.body.data.error === 'object') {
+                    chat(
+                        channel,
+                        `Error uploading to imgur album! | Reason: not a valid image format | Status: ${err.status}`
+                    );
+                    logger.error(
+                        `>${this.name} | Image couldn't be uploaded to the Imgur album!`,
+                        err,
+                        err.body.data.error
+                    );
+                } else {
+                    chat(
+                        channel,
+                        `Error uploading to imgur album! | Reason: ${err.body.data.error} | Status: ${err.status}`
+                    );
+                    logger.error(`>${this.name} | Image couldn't be uploaded to the Imgur album!`, err);
+                }
             });
     }
 };
