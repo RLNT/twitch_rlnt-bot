@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning].
 - /
 
 
+## [1.3.1] - 2021-08-26
+
+### Added
+- imgur alias add
+
+### Changed
+- converted latency to ms
+
+
 ## [1.3.0] - 2021-08-26
 
 ### Changed
@@ -88,7 +97,8 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.3.0...HEAD
+[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.4...v1.3.0
 [1.2.4]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.3...v1.2.4
 [1.2.3]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.2...v1.2.3
