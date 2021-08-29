@@ -1,6 +1,12 @@
 import { resolve } from 'path';
-import ResolvePlugin from 'ts-paths-resolve-plugin';
 import { Configuration } from 'webpack';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { paths } = require('./tsconfig.json').compilerOptions;
+
+type Aliases = {
+    [key: string]: string;
+};
 
 const config: Configuration = {
     entry: './src/startup.ts',
@@ -24,8 +30,8 @@ const config: Configuration = {
         ]
     },
     resolve: {
-        plugins: [new ResolvePlugin()],
-        extensions: ['.js', '.ts']
+        extensions: ['.js', '.ts'],
+        alias: resolveTSPaths()
     },
     output: {
         filename: 'RLNTBot.js',
@@ -34,3 +40,18 @@ const config: Configuration = {
 };
 
 export default config;
+
+/**
+ * Retrieves the paths from the tsconfig.json and creates an alias for each path.
+ *
+ * @returns An array of path mapping aliases
+ */
+function resolveTSPaths(): Aliases {
+    const aliases: Aliases = {};
+    Object.keys(paths).forEach(key => {
+        const alias = key.replace('/*', '');
+        const path = resolve(__dirname, 'src', paths[key][0].replace('/*', '').replace('*', ''));
+        aliases[alias] = path;
+    });
+    return aliases;
+}

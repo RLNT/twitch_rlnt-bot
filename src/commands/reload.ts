@@ -1,5 +1,5 @@
-import { Command } from '@internals/commandhandler.js';
-import { chat, isWhitelisted, reload } from '@utils/helpers.js';
+import { Command } from '@internals/commandhandler';
+import { chat, isWhitelisted, reload } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 export const command: Command = {

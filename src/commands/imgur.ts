@@ -1,8 +1,8 @@
-import { logger } from '@/startup.js';
-import { Command } from '@internals/commandhandler.js';
-import { uploadImage } from '@modules/imgur.js';
-import { config } from '@utils/config.js';
-import { chat, isWhitelisted } from '@utils/helpers.js';
+import { logger } from '@/startup';
+import { Command } from '@internals/commandhandler';
+import { uploadImage } from '@modules/imgur';
+import { config } from '@utils/config';
+import { chat, isWhitelisted } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 const commandRegex = new RegExp(

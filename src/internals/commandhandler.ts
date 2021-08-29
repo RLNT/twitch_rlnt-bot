@@ -1,7 +1,7 @@
-import { logger } from '@/startup.js';
-import { client } from '@internals/clienthandler.js';
-import { config } from '@utils/config.js';
-import { Collection, commandEnabled } from '@utils/helpers.js';
+import { logger } from '@/startup';
+import { client } from '@internals/clienthandler';
+import { config } from '@utils/config';
+import { Collection, commandEnabled } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 /** The command type representing the default structure of a command. */

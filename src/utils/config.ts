@@ -1,4 +1,4 @@
-import { logger } from '@/startup.js';
+import { logger } from '@/startup';
 import * as TOML from '@iarna/toml';
 import { accessSync, constants, fstatSync, openSync, PathLike, readFileSync, Stats, writeFileSync } from 'fs';
 import { resolve } from 'path';
@@ -55,7 +55,9 @@ export async function loadConfig(): Promise<void> {
     logger.info('Loading configuration...');
     try {
         checkPermission(directory);
-    } catch (err) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+        logger.debug(err);
         if (err.code === 'ENOENT') {
             logger.error('Configuration file not found! Are you executing from the correct directory?');
             throw `Didn't find configuration file in ${directory}`;
@@ -79,11 +81,12 @@ export async function loadConfig(): Promise<void> {
 export async function writeConfig(): Promise<void> {
     try {
         checkPermission(directory);
-    } catch (e) {
-        if (e.code === 'ENOENT') {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+        if (err.code === 'ENOENT') {
             // ignore
         } else {
-            throw e;
+            throw err;
         }
     }
 

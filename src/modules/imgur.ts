@@ -1,7 +1,7 @@
-import { logger } from '@/startup.js';
-import { reloadCommands } from '@internals/commandhandler.js';
+import { logger } from '@/startup';
+import { reloadCommands } from '@internals/commandhandler';
 import { Client as ImgurClient } from '@rmp135/imgur';
-import { config, writeConfig } from '@utils/config.js';
+import { config, writeConfig } from '@utils/config';
 import { commandEnabled } from '@utils/helpers';
 import promptly from 'promptly';
 

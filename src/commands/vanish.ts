@@ -1,7 +1,7 @@
-import { logger } from '@/startup.js';
+import { logger } from '@/startup';
 import { client } from '@internals/clienthandler';
-import { Command } from '@internals/commandhandler.js';
-import { chat } from '@utils/helpers.js';
+import { Command } from '@internals/commandhandler';
+import { chat } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 export const command: Command = {

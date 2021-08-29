@@ -1,7 +1,7 @@
-import { logger } from '@/startup.js';
-import { Command } from '@internals/commandhandler.js';
-import { config, writeConfig } from '@utils/config.js';
-import { chat, getCommandWhitelist, isWhitelisted } from '@utils/helpers.js';
+import { logger } from '@/startup';
+import { Command } from '@internals/commandhandler';
+import { config, writeConfig } from '@utils/config';
+import { chat, getCommandWhitelist, isWhitelisted } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 const commandRegex = new RegExp(/^([a-z]+) (add|remove|list)? ?([a-z\d]+)?$/i);

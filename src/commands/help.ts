@@ -1,6 +1,6 @@
-import { Command, getCommandByName, getLoadedCommands } from '@internals/commandhandler.js';
-import { config } from '@utils/config.js';
-import { chat } from '@utils/helpers.js';
+import { Command, getCommandByName, getLoadedCommands } from '@internals/commandhandler';
+import { config } from '@utils/config';
+import { chat } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 export const command: Command = {

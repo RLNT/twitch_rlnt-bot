@@ -1,7 +1,8 @@
-import { logger } from '@/startup.js';
-import { client } from '@internals/clienthandler.js';
-import { reloadCommands } from '@internals/commandhandler.js';
-import { config, loadConfig } from '@utils/config.js';
+import { logger } from '@/startup';
+import { client } from '@internals/clienthandler';
+import { reloadCommands } from '@internals/commandhandler';
+import { config, loadConfig } from '@utils/config';
+import fetch from 'node-fetch';
 import { ChatUserstate } from 'tmi.js';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

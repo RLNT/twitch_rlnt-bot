@@ -1,6 +1,6 @@
-import { logger } from '@/startup.js';
-import { handleCommand } from '@internals/commandhandler.js';
-import { config, writeConfig } from '@utils/config.js';
+import { logger } from '@/startup';
+import { handleCommand } from '@internals/commandhandler';
+import { config, writeConfig } from '@utils/config';
 import { chat } from '@utils/helpers';
 import { Client } from 'tmi.js';
 
