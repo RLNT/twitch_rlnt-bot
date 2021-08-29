@@ -115,7 +115,18 @@ export async function reload(): Promise<void> {
  * @returns The bot version as a string
  */
 export function getVersion(): string {
-    return version;
+    return `v${version}`;
+}
+
+/**
+ * Gets the latest release version from the GitHub repository.
+ *
+ * @returns The latest version as a string
+ */
+export async function getLatestVersion(): Promise<string> {
+    return await fetch('https://api.github.com/repos/RLNT/twitch_rlnt-bot/releases/latest')
+        .then(res => res.json())
+        .then(res => res.tag_name);
 }
 
 /**

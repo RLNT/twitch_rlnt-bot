@@ -10,7 +10,12 @@ export const logger = createLogger();
 (async (): Promise<void> => {
     logger.info('RLNTBot');
     logger.info('Author: RLNT, DamnRelentless');
-    logger.info(`Version: ${getVersion()}`);
+
+    const version = getVersion();
+    const latestVersion = await getLatestVersion();
+    logger.info(`Current Version: ${version}`);
+    logger.info(`Latest Version: ${latestVersion}`);
+    if (version !== latestVersion) logger.note('New Version available!');
     logger.blank();
 
     logger.start(`Bot is starting!`);
