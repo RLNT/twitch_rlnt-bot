@@ -31,17 +31,6 @@ export async function clientRegister(): Promise<void> {
 export async function registerEvents(): Promise<void> {
     logger.info('Registering Twitch events...');
 
-    // registers the connected event to log a simple message
-    client.once('connected', async () => {
-        logger.success('Twitch client connected!');
-        // send a message to the channel the restart was triggered from
-        if (config.persistent.restartOrigin) {
-            chat(config.persistent.restartOrigin, 'Successfully restarted!');
-            config.persistent.restartOrigin = '';
-            await writeConfig();
-        }
-    });
-
     // registers the reconnect event to log a simple message
     client.on('reconnect', async () => {
         logger.info('Twitch client reconnected!');
@@ -68,10 +57,30 @@ export async function registerEvents(): Promise<void> {
 
 /** Try to connect to the Twitch IRC server. */
 export async function login(): Promise<void> {
-    logger.info('Logging in to Twitch IRC...');
-    try {
-        await client.connect();
-    } catch (err) {
-        throw 'Failed to login to Twitch IRC: ' + err;
-    }
+    return new Promise(resolve => {
+        logger.info('Logging in to Twitch IRC...');
+
+        /**
+         * Registers the connected event to log a simple message.
+         *
+         * This also ensures it's only fired once and won't spam the log.
+         * Returns the promise of the function so the startup waits for the login.
+         */
+        client.once('connected', async () => {
+            logger.success('Twitch client connected!');
+            // send a message to the channel the restart was triggered from
+            if (config.persistent.restartOrigin) {
+                chat(config.persistent.restartOrigin, 'Successfully restarted!');
+                config.persistent.restartOrigin = '';
+                await writeConfig();
+            }
+            resolve();
+        });
+
+        try {
+            client.connect();
+        } catch (err) {
+            throw 'Failed to login to Twitch IRC: ' + err;
+        }
+    });
 }
