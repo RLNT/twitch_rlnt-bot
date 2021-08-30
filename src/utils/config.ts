@@ -10,7 +10,7 @@ type Config = {
     };
     readonly general: {
         readonly prefix: string;
-        readonly channels: string[];
+        channels: string[];
         readonly auto_reconnect: boolean;
         readonly colored: boolean;
     };
@@ -90,6 +90,11 @@ export async function writeConfig(): Promise<void> {
             throw err;
         }
     }
+
+    config.general.channels = config.general.channels.map(channel => {
+        if (!channel.startsWith('#')) return channel;
+        return channel.slice(1);
+    });
 
     writeFileSync(directory, TOML.stringify(<TOML.JsonMap>config), 'utf8');
 }
