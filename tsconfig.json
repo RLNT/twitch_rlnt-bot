@@ -36,11 +36,11 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"],
       "@commands/*": ["./commands/*"],
       "@internals/*": ["./internals/*"],
       "@modules/*": ["./modules/*"],
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@/*": ["*"]
     }
   },
   "include": ["src/**/*"]
