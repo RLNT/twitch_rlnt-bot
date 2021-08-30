@@ -10,12 +10,12 @@ type Aliases = {
 
 const config: Configuration = {
     entry: './src/startup.ts',
-    mode: 'production',
+    mode: 'development',
     node: {
         __dirname: true
     },
     target: 'node',
-    devtool: 'inline-source-map',
+    devtool: false,
     externals: {
         bufferutil: 'bufferutil',
         'utf-8-validate': 'utf-8-validate'
