@@ -31,6 +31,7 @@ type Config = {
         imgur?: CommandConfig;
         readonly info?: CommandConfig;
         readonly join?: CommandConfig;
+        readonly leave?: CommandConfig;
         readonly ping?: CommandConfig;
         readonly reload?: CommandConfig;
         readonly restart?: CommandConfig;

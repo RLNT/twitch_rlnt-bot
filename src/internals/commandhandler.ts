@@ -23,6 +23,7 @@ const commandList = [
     'imgur',
     'info',
     'join',
+    'leave',
     'ping',
     'reload',
     'restart',
