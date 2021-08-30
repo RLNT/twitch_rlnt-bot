@@ -43,7 +43,8 @@ export function splitMessage(message: string): string[] {
 }
 
 /**
- * Sends a message to the given channel and automatically splits the message if it exceeds the character limit.
+ * Sends a message to the given channel and automatically splits the message if
+ * it exceeds the character limit.
  *
  * @param channel The channel to send the message in
  * @param message The message to send
@@ -132,8 +133,8 @@ export async function getLatestVersion(): Promise<string> {
 /**
  * Checks the config if a specific command is enabled.
  *
- * This ensures that a command is also enabled if the config entry is missing. To deactivate a command, it needs to be
- * explicetely disabled in the config.
+ * This ensures that a command is also enabled if the config entry is missing.
+ * To deactivate a command, it needs to be explicetely disabled in the config.
  *
  * @param command The name of the command
  * @returns True if the command is enabled, false otherwise

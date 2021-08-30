@@ -59,7 +59,8 @@ export async function reloadCommands(): Promise<void> {
 /**
  * Handles commands from the Twitch chat.
  *
- * This basically splits the raw message into logical parts and calls the execute function of the dynamically loaded command.
+ * This basically splits the raw message into logical parts and calls the
+ * execute function of the dynamically loaded command.
  *
  * @param channel The channel the command was sent in
  * @param sender The user who sent the command
