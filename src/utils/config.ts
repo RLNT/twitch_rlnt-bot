@@ -30,6 +30,7 @@ type Config = {
         readonly help?: CommandConfig;
         imgur?: CommandConfig;
         readonly info?: CommandConfig;
+        readonly join?: CommandConfig;
         readonly ping?: CommandConfig;
         readonly reload?: CommandConfig;
         readonly restart?: CommandConfig;

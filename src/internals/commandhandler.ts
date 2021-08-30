@@ -15,9 +15,21 @@ export type Command = {
     execute(channel?: string, sender?: ChatUserstate, argument?: string | undefined): Promise<void>;
 };
 
-const commandList = ['album', 'help', 'imgur', 'info', 'ping', 'reload', 'restart', 'stop', 'vanish', 'whitelist'];
 const commands = new Collection<string, Command>();
 const cooldowns = new Collection<string, Collection<string, number>>();
+const commandList = [
+    'album',
+    'help',
+    'imgur',
+    'info',
+    'join',
+    'ping',
+    'reload',
+    'restart',
+    'stop',
+    'vanish',
+    'whitelist'
+];
 
 /**
  * Loads commands dynamically from the command directory.
