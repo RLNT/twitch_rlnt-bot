@@ -1,6 +1,6 @@
-import { Command } from '@internals/commandhandler.js';
-import { config } from '@utils/config.js';
-import { chat } from '@utils/helpers.js';
+import { Command } from '@internals/commandhandler';
+import { config } from '@utils/config';
+import { chat } from '@utils/helpers';
 
 export const command: Command = {
     name: 'album',

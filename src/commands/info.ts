@@ -1,5 +1,5 @@
-import { Command } from '@internals/commandhandler.js';
-import { chat, getVersion } from '@utils/helpers.js';
+import { Command } from '@internals/commandhandler';
+import { chat, getVersion } from '@utils/helpers';
 
 export const command: Command = {
     name: 'info',

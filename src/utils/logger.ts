@@ -4,6 +4,7 @@ type CustomLogger =
     | 'await'
     | 'blank'
     | 'command'
+    | 'commande'
     | 'complete'
     | 'debug'
     | 'done'
@@ -70,6 +71,13 @@ export function createLogger(): Signale<CustomLogger> {
         logLevel: 'info'
     };
 
+    const typeCommandE: LoggerConfiguration = {
+        badge: '~',
+        color: 'red',
+        label: 'cmd',
+        logLevel: 'info'
+    };
+
     const options: SignaleConstructorOptions<CustomLogger> = {
         types: {
             info: typeInfo,
@@ -77,7 +85,8 @@ export function createLogger(): Signale<CustomLogger> {
             note: typeNote,
             blank: typeBlank,
             done: typeDone,
-            command: typeCommand
+            command: typeCommand,
+            commande: typeCommandE
         }
     };
 

@@ -1,7 +1,8 @@
-import { logger } from '@/startup.js';
-import { client } from '@internals/clienthandler.js';
-import { reloadCommands } from '@internals/commandhandler.js';
-import { config, loadConfig } from '@utils/config.js';
+import { logger } from '@/startup';
+import { client } from '@internals/clienthandler';
+import { reloadCommands } from '@internals/commandhandler';
+import { config, loadConfig } from '@utils/config';
+import fetch from 'node-fetch';
 import { ChatUserstate } from 'tmi.js';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -42,7 +43,8 @@ export function splitMessage(message: string): string[] {
 }
 
 /**
- * Sends a message to the given channel and automatically splits the message if it exceeds the character limit.
+ * Sends a message to the given channel and automatically splits the message if
+ * it exceeds the character limit.
  *
  * @param channel The channel to send the message in
  * @param message The message to send
@@ -51,7 +53,11 @@ export function chat(channel: string, message: string | string[]): void {
     if (Array.isArray(message)) message = message.join('');
     const split = splitMessage(message);
     split.forEach(async msg => {
-        await client.say(channel, msg);
+        if (config.general.colored) {
+            await client.action(channel, msg);
+        } else {
+            await client.say(channel, msg);
+        }
     });
 }
 
@@ -114,14 +120,25 @@ export async function reload(): Promise<void> {
  * @returns The bot version as a string
  */
 export function getVersion(): string {
-    return version;
+    return `v${version}`;
+}
+
+/**
+ * Gets the latest release version from the GitHub repository.
+ *
+ * @returns The latest version as a string
+ */
+export async function getLatestVersion(): Promise<string> {
+    return await fetch('https://api.github.com/repos/RLNT/twitch_rlnt-bot/releases/latest')
+        .then(res => res.json())
+        .then(res => res.tag_name);
 }
 
 /**
  * Checks the config if a specific command is enabled.
  *
- * This ensures that a command is also enabled if the config entry is missing. To deactivate a command, it needs to be
- * explicetely disabled in the config.
+ * This ensures that a command is also enabled if the config entry is missing.
+ * To deactivate a command, it needs to be explicetely disabled in the config.
  *
  * @param command The name of the command
  * @returns True if the command is enabled, false otherwise

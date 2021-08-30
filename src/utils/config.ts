@@ -1,4 +1,4 @@
-import { logger } from '@/startup.js';
+import { logger } from '@/startup';
 import * as TOML from '@iarna/toml';
 import { accessSync, constants, fstatSync, openSync, PathLike, readFileSync, Stats, writeFileSync } from 'fs';
 import { resolve } from 'path';
@@ -10,8 +10,9 @@ type Config = {
     };
     readonly general: {
         readonly prefix: string;
-        readonly channels: string[];
+        channels: string[];
         readonly auto_reconnect: boolean;
+        readonly colored: boolean;
     };
     readonly logging: {
         readonly messages: boolean;
@@ -25,16 +26,18 @@ type Config = {
         refresh_token?: string;
     };
     commands?: {
-        readonly album?: CommandConfig | undefined;
-        readonly help?: CommandConfig | undefined;
-        imgur?: CommandConfig | undefined;
-        readonly info?: CommandConfig | undefined;
-        readonly ping?: CommandConfig | undefined;
-        readonly reload?: CommandConfig | undefined;
-        readonly restart?: CommandConfig | undefined;
-        readonly stop?: CommandConfig | undefined;
-        readonly vanish?: CommandConfig | undefined;
-        readonly whitelist?: CommandConfig | undefined;
+        readonly album?: CommandConfig;
+        readonly help?: CommandConfig;
+        imgur?: CommandConfig;
+        readonly info?: CommandConfig;
+        readonly join?: CommandConfig;
+        readonly leave?: CommandConfig;
+        readonly ping?: CommandConfig;
+        readonly reload?: CommandConfig;
+        readonly restart?: CommandConfig;
+        readonly stop?: CommandConfig;
+        readonly vanish?: CommandConfig;
+        readonly whitelist?: CommandConfig;
         [command: string]: CommandConfig | undefined;
     };
     persistent: {
@@ -55,7 +58,9 @@ export async function loadConfig(): Promise<void> {
     logger.info('Loading configuration...');
     try {
         checkPermission(directory);
-    } catch (err) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+        logger.debug(err);
         if (err.code === 'ENOENT') {
             logger.error('Configuration file not found! Are you executing from the correct directory?');
             throw `Didn't find configuration file in ${directory}`;
@@ -79,13 +84,19 @@ export async function loadConfig(): Promise<void> {
 export async function writeConfig(): Promise<void> {
     try {
         checkPermission(directory);
-    } catch (e) {
-        if (e.code === 'ENOENT') {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+        if (err.code === 'ENOENT') {
             // ignore
         } else {
-            throw e;
+            throw err;
         }
     }
+
+    config.general.channels = config.general.channels.map(channel => {
+        if (!channel.startsWith('#')) return channel;
+        return channel.slice(1);
+    });
 
     writeFileSync(directory, TOML.stringify(<TOML.JsonMap>config), 'utf8');
 }

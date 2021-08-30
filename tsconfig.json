@@ -5,7 +5,7 @@
     "module": "CommonJS",
     "rootDir": "src",
     "outDir": "out",
-    "sourceMap": true,
+    "sourceMap": false,
     "removeComments": true,
 
     "strict": true,
@@ -15,6 +15,8 @@
     "strictBindCallApply": true,
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
+    "exactOptionalPropertyTypes": true,
+    "useUnknownInCatchVariables": true,
     "alwaysStrict": true,
 
     "noUnusedLocals": true,
@@ -34,11 +36,11 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"],
       "@commands/*": ["./commands/*"],
       "@internals/*": ["./internals/*"],
       "@modules/*": ["./modules/*"],
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@/*": ["*"]
     }
   },
   "include": ["src/**/*"]

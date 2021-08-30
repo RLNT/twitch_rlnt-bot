@@ -1,7 +1,7 @@
-import { logger } from '@/startup.js';
-import { client } from '@internals/clienthandler.js';
-import { config } from '@utils/config.js';
-import { Collection, commandEnabled } from '@utils/helpers.js';
+import { logger } from '@/startup';
+import { client } from '@internals/clienthandler';
+import { config } from '@utils/config';
+import { chat, Collection, commandEnabled } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 /** The command type representing the default structure of a command. */
@@ -15,9 +15,22 @@ export type Command = {
     execute(channel?: string, sender?: ChatUserstate, argument?: string | undefined): Promise<void>;
 };
 
-const commandList = ['album', 'help', 'imgur', 'info', 'ping', 'reload', 'restart', 'stop', 'vanish', 'whitelist'];
 const commands = new Collection<string, Command>();
 const cooldowns = new Collection<string, Collection<string, number>>();
+const commandList = [
+    'album',
+    'help',
+    'imgur',
+    'info',
+    'join',
+    'leave',
+    'ping',
+    'reload',
+    'restart',
+    'stop',
+    'vanish',
+    'whitelist'
+];
 
 /**
  * Loads commands dynamically from the command directory.
@@ -59,7 +72,8 @@ export async function reloadCommands(): Promise<void> {
 /**
  * Handles commands from the Twitch chat.
  *
- * This basically splits the raw message into logical parts and calls the execute function of the dynamically loaded command.
+ * This basically splits the raw message into logical parts and calls the
+ * execute function of the dynamically loaded command.
  *
  * @param channel The channel the command was sent in
  * @param sender The user who sent the command
@@ -75,17 +89,17 @@ export async function handleCommand(channel: string, sender: ChatUserstate, msg:
 
     // cancel the command under certain conditions
     if (!command) {
-        client.say(channel, 'This command does not exist!');
+        chat(channel, 'This command does not exist!');
         logger.command(`${channel} | ${sender.username} tried using unrecognized command ${commandName}!`);
         return;
     }
     if (!commandEnabled(command.name)) {
-        client.say(channel, 'This command is currently disabled!');
+        chat(channel, 'This command is currently disabled!');
         logger.command(`${channel} | ${sender.username} tried using disabled command ${commandName}!`);
         return;
     }
     if (command.modRequired && !client.isMod(channel, client.getUsername())) {
-        client.say(channel, 'This command is only available if the bot is a moderator of the channel!');
+        chat(channel, 'This command is only available if the bot is a moderator of the channel!');
         logger.command(`${channel} | ${sender.username} tried using mod-only command ${commandName}!`);
         return;
     }

@@ -1,7 +1,7 @@
-import { logger } from '@/startup.js';
+import { logger } from '@/startup';
 import { client } from '@internals/clienthandler';
-import { Command } from '@internals/commandhandler.js';
-import { chat } from '@utils/helpers.js';
+import { Command } from '@internals/commandhandler';
+import { chat } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 export const command: Command = {
@@ -25,7 +25,7 @@ export const command: Command = {
                     chat(channel, 'Try /unmod first. Okayge');
                     return;
                 }
-                logger.error(`${sender.username} couldn't be vanished!`, err);
+                logger.commande(`${sender.username} couldn't be vanished!`, err);
             });
     }
 };

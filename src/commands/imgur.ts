@@ -1,8 +1,8 @@
-import { logger } from '@/startup.js';
-import { Command } from '@internals/commandhandler.js';
-import { uploadImage } from '@modules/imgur.js';
-import { config } from '@utils/config.js';
-import { chat, isWhitelisted } from '@utils/helpers.js';
+import { logger } from '@/startup';
+import { Command } from '@internals/commandhandler';
+import { uploadImage } from '@modules/imgur';
+import { config } from '@utils/config';
+import { chat, isWhitelisted } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 const commandRegex = new RegExp(
@@ -56,7 +56,7 @@ export const command: Command = {
                         channel,
                         `Error uploading to imgur album! | Reason: not a valid image format | Status: ${err.status}`
                     );
-                    logger.error(
+                    logger.commande(
                         `>${this.name} | Image couldn't be uploaded to the Imgur album!`,
                         err,
                         err.body.data.error
@@ -66,7 +66,7 @@ export const command: Command = {
                         channel,
                         `Error uploading to imgur album! | Reason: ${err.body.data.error} | Status: ${err.status}`
                     );
-                    logger.error(`>${this.name} | Image couldn't be uploaded to the Imgur album!`, err);
+                    logger.commande(`>${this.name} | Image couldn't be uploaded to the Imgur album!`, err);
                 }
             });
     }
