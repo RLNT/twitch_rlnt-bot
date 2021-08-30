@@ -43,7 +43,7 @@ export const command: Command = {
             })
             .catch(err => {
                 chat(channel, `Error joining channel ${args}! | Reason: invalid channel`);
-                logger.error(`>${this.name} | Channel ${args} couldn't be joined!`, err);
+                logger.commande(`>${this.name} | Channel ${args} couldn't be joined!`, err);
             });
     }
 };

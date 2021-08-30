@@ -56,7 +56,7 @@ export const command: Command = {
                         channel,
                         `Error uploading to imgur album! | Reason: not a valid image format | Status: ${err.status}`
                     );
-                    logger.error(
+                    logger.commande(
                         `>${this.name} | Image couldn't be uploaded to the Imgur album!`,
                         err,
                         err.body.data.error
@@ -66,7 +66,7 @@ export const command: Command = {
                         channel,
                         `Error uploading to imgur album! | Reason: ${err.body.data.error} | Status: ${err.status}`
                     );
-                    logger.error(`>${this.name} | Image couldn't be uploaded to the Imgur album!`, err);
+                    logger.commande(`>${this.name} | Image couldn't be uploaded to the Imgur album!`, err);
                 }
             });
     }

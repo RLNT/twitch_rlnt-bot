@@ -14,9 +14,8 @@ export const command: Command = {
                 const ping = (time[0] || 0) * 1000;
                 chat(channel, `Pong! Latency: ${ping}ms`);
             })
-            .catch(err => {
+            .catch(() => {
                 chat(channel, 'Ping request timed out!');
-                console.error(err);
             });
     }
 };

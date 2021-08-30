@@ -25,7 +25,7 @@ export const command: Command = {
                     chat(channel, 'Try /unmod first. Okayge');
                     return;
                 }
-                logger.error(`${sender.username} couldn't be vanished!`, err);
+                logger.commande(`${sender.username} couldn't be vanished!`, err);
             });
     }
 };
