@@ -26,16 +26,16 @@ type Config = {
         refresh_token?: string;
     };
     commands?: {
-        readonly album?: CommandConfig | undefined;
-        readonly help?: CommandConfig | undefined;
-        imgur?: CommandConfig | undefined;
-        readonly info?: CommandConfig | undefined;
-        readonly ping?: CommandConfig | undefined;
-        readonly reload?: CommandConfig | undefined;
-        readonly restart?: CommandConfig | undefined;
-        readonly stop?: CommandConfig | undefined;
-        readonly vanish?: CommandConfig | undefined;
-        readonly whitelist?: CommandConfig | undefined;
+        readonly album?: CommandConfig;
+        readonly help?: CommandConfig;
+        imgur?: CommandConfig;
+        readonly info?: CommandConfig;
+        readonly ping?: CommandConfig;
+        readonly reload?: CommandConfig;
+        readonly restart?: CommandConfig;
+        readonly stop?: CommandConfig;
+        readonly vanish?: CommandConfig;
+        readonly whitelist?: CommandConfig;
         [command: string]: CommandConfig | undefined;
     };
     persistent: {
