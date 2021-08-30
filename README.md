@@ -30,7 +30,7 @@ Since this is a project mostly for private use, we will not go into detail here.
 Make use of the `help` command if you don't know what to do.
 
 New builds are automatically compiled and released when a new version tag is pushed.<br>
-There is no auto-updater or notifier when there is a new version.
+There is no auto-updater but a notifier on startup when there is a new version.
 
 
 ## **⏰ Changelog**

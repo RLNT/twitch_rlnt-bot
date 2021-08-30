@@ -9,6 +9,31 @@ and this project adheres to [Semantic Versioning].
 - /
 
 
+## [1.4.0] - 2021-08-31
+
+### Added
+- join command
+  - joins a specified channel
+  - saves the channel to the config
+- leave command
+  - leaves a specified channel
+  - if not provided, leaves the current channel
+  - removes the channel from the config
+- latest and new version notifier
+- option for the bot using colored messages
+
+### Changed
+- to new TypeScript version
+- tsconfig path mapping
+- line length limit for doc comments
+- improved compile time a lot
+- startup now waits for the bot to connect to Twitch IRC
+- command issues are now logged in red
+
+### Fixed
+- possible undefined config values due to new TS version
+
+
 ## [1.3.1] - 2021-08-26
 
 ### Added
@@ -97,7 +122,8 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.3.1...HEAD
+[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.3.1...v1.4.0
 [1.3.1]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.4...v1.3.0
 [1.2.4]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.2.3...v1.2.4
