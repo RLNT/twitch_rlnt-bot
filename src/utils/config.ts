@@ -12,6 +12,7 @@ type Config = {
         readonly prefix: string;
         readonly channels: string[];
         readonly auto_reconnect: boolean;
+        readonly colored: boolean;
     };
     readonly logging: {
         readonly messages: boolean;

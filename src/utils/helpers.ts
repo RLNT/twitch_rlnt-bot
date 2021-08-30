@@ -53,7 +53,11 @@ export function chat(channel: string, message: string | string[]): void {
     if (Array.isArray(message)) message = message.join('');
     const split = splitMessage(message);
     split.forEach(async msg => {
-        await client.say(channel, msg);
+        if (config.general.colored) {
+            await client.action(channel, msg);
+        } else {
+            await client.say(channel, msg);
+        }
     });
 }
 

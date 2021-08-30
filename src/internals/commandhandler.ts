@@ -1,7 +1,7 @@
 import { logger } from '@/startup';
 import { client } from '@internals/clienthandler';
 import { config } from '@utils/config';
-import { Collection, commandEnabled } from '@utils/helpers';
+import { chat, Collection, commandEnabled } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 /** The command type representing the default structure of a command. */
@@ -76,17 +76,17 @@ export async function handleCommand(channel: string, sender: ChatUserstate, msg:
 
     // cancel the command under certain conditions
     if (!command) {
-        client.say(channel, 'This command does not exist!');
+        chat(channel, 'This command does not exist!');
         logger.command(`${channel} | ${sender.username} tried using unrecognized command ${commandName}!`);
         return;
     }
     if (!commandEnabled(command.name)) {
-        client.say(channel, 'This command is currently disabled!');
+        chat(channel, 'This command is currently disabled!');
         logger.command(`${channel} | ${sender.username} tried using disabled command ${commandName}!`);
         return;
     }
     if (command.modRequired && !client.isMod(channel, client.getUsername())) {
-        client.say(channel, 'This command is only available if the bot is a moderator of the channel!');
+        chat(channel, 'This command is only available if the bot is a moderator of the channel!');
         logger.command(`${channel} | ${sender.username} tried using mod-only command ${commandName}!`);
         return;
     }
