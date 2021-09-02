@@ -60,7 +60,6 @@ export async function loadConfig(): Promise<void> {
         checkPermission(directory);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-        logger.debug(err);
         if (err.code === 'ENOENT') {
             logger.error('Configuration file not found! Are you executing from the correct directory?');
             throw `Didn't find configuration file in ${directory}`;
