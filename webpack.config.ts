@@ -10,7 +10,7 @@ type Aliases = {
 
 const config: Configuration = {
     entry: './src/startup.ts',
-    mode: 'development',
+    mode: 'production',
     node: {
         __dirname: true
     },
@@ -24,7 +24,7 @@ const config: Configuration = {
         rules: [
             {
                 test: /\.ts$/,
-                use: 'ts-loader',
+                loader: 'ts-loader',
                 exclude: /node_modules/
             }
         ]

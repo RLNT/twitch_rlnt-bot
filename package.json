@@ -1,6 +1,6 @@
 {
   "name": "rlnt-bot",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A Twitch chat bot for private use with utility functions implemented on demand.",
   "homepage": "https://github.com/RLNT/twitch_rlnt-bot",
   "bugs": {
@@ -34,7 +34,7 @@
     "tmi.js": "^1.8.5"
   },
   "devDependencies": {
-    "@types/node": "^16.7.8",
+    "@types/node": "^16.7.10",
     "@types/node-fetch": "^2.5.12",
     "@types/promptly": "^3.0.2",
     "@types/tmi.js": "^1.7.2",
@@ -45,18 +45,18 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsdoc": "^36.0.8",
-    "eslint-plugin-regexp": "^1.0.0",
+    "eslint-plugin-regexp": "^1.1.0",
     "husky": "^7.0.2",
     "pkg": "^5.3.1",
     "prettier": "^2.3.2",
-    "prettier-plugin-jsdoc": "^0.3.23",
+    "prettier-plugin-jsdoc": "^0.3.24",
     "prettier-plugin-organize-imports": "^2.3.3",
     "prettier-plugin-packagejson": "^2.2.11",
     "pretty-quick": "^3.1.1",
     "ts-loader": "^9.2.5",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2",
-    "webpack": "^5.51.1",
+    "webpack": "^5.51.2",
     "webpack-cli": "^4.8.0"
   }
 }

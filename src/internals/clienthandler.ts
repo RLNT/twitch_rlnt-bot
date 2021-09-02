@@ -43,7 +43,7 @@ export async function registerEvents(): Promise<void> {
 
         // pass the handling to the command handler if the message starts with the command prefix
         if (msg.startsWith(config.general.prefix)) {
-            handleCommand(channel, sender, msg);
+            handleCommand(channel, sender, msg.trim());
         } else {
             // only log messages with config option
             if (config.logging?.messages) {
