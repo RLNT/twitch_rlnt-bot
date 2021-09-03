@@ -1,6 +1,6 @@
 {
   "name": "rlnt-bot",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "A Twitch chat bot for private use with utility functions implemented on demand.",
   "homepage": "https://github.com/RLNT/twitch_rlnt-bot",
   "bugs": {
