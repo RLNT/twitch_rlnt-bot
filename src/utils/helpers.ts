@@ -86,9 +86,9 @@ export function isWhitelisted(sender: ChatUserstate | string, command: string, l
     if (!config.commands) return false;
     if (!list) list = getCommandWhitelist(command);
     if (list.length === 0) return false;
-    const senderName = typeof sender === 'string' ? sender.toLowerCase() : (sender.username ?? '').toLowerCase();
+    const senderName = typeof sender === 'string' ? sender : sender.username ?? '';
     if (senderName === '') return false;
-    return list.includes(senderName);
+    return list.map(elem => elem.toLowerCase()).includes(senderName.toLowerCase());
 }
 
 /**
@@ -100,8 +100,7 @@ export function isWhitelisted(sender: ChatUserstate | string, command: string, l
 export function getCommandWhitelist(command: string): string[] {
     if (!config.commands) return [];
     const list = config.commands[command]?.whitelist ?? [];
-    if (list.length === 0) return [];
-    return list.map(name => name.toLowerCase());
+    return list;
 }
 
 /** Reloads configuration and all commands. */
