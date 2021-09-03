@@ -48,7 +48,7 @@ export const command: Command = {
         uploadImage(url, date)
             .then(() => {
                 chat(channel, `Uploaded to Imgur album! https://imgur.com/a/${config.imgur.album_id}`);
-                logger.command(`>${this.name} | Image was added to the Imgur album!`);
+                logger.cmds(`>${this.name} | Image was added to the Imgur album!`);
             })
             .catch(err => {
                 if (typeof err.body.data.error === 'object') {
@@ -56,7 +56,7 @@ export const command: Command = {
                         channel,
                         `Error uploading to imgur album! | Reason: not a valid image format | Status: ${err.status}`
                     );
-                    logger.commande(
+                    logger.cmde(
                         `>${this.name} | Image couldn't be uploaded to the Imgur album!`,
                         err,
                         err.body.data.error
@@ -66,7 +66,7 @@ export const command: Command = {
                         channel,
                         `Error uploading to imgur album! | Reason: ${err.body.data.error} | Status: ${err.status}`
                     );
-                    logger.commande(`>${this.name} | Image couldn't be uploaded to the Imgur album!`, err);
+                    logger.cmde(`>${this.name} | Image couldn't be uploaded to the Imgur album!`, err);
                 }
             });
     }
@@ -87,6 +87,9 @@ async function formDate(day: string | undefined, month: string | undefined, year
             resolve(`${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`);
         } else {
             if (parseInt(day) > 31 || parseInt(month) > 12) return reject();
+            if (day.length === 1) day = `0${day}`;
+            if (month.length === 1) month = `0${month}`;
+            if (year.length === 2) year = `20${year}`;
             resolve(`${day}.${month}.${year}`);
         }
     });

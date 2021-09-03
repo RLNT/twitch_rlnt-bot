@@ -30,11 +30,23 @@
     # the Imgur client secret to use
     client_secret = "pen897b9678nvna7onv8a4van4w8w7698763"
 
+[commands.exec]
+    # the users that can use the exec command
+    whitelist = ["awesomeuser"]
+
 [commands.imgur]
     # the users that can use the imgur command
     whitelist = ["awesomeuser"]
     # if you want to explicetely disable a command, you can do it like this:
     # enabled = false
+
+[commands.join]
+    # the users that can use the join command
+    whitelist = ["awesomeuser"]
+
+[commands.leave]
+    # the users that can use the leave command
+    whitelist = ["awesomeuser"]
 
 [commands.reload]
     # the users that can use the reload command

@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning].
 - /
 
 
+## [1.5.0] - 2021-09-03
+
+### Added
+- exec command
+  - executes a specified message as the bot
+- new logger color for successfully executed commands
+
+### Changed
+- dates are now properly formatted for imgur when short values are used
+
+### Fixed
+- case-sensitivity issues for whitelists
+
+
 ## [1.4.1] - 2021-09-03
 
 ### Changed
@@ -135,7 +149,8 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.4.1...HEAD
+[unreleased]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.4.1...v1.5.0
 [1.4.1]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.3.1...v1.4.0
 [1.3.1]: https://github.com/RLNT/twitch_rlnt-bot/compare/v1.3.0...v1.3.1

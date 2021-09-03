@@ -18,14 +18,14 @@ export const command: Command = {
         client
             .timeout(channel, sender.username || '', 1)
             .then(() => {
-                logger.command(`>${this.name} | ${sender.username} was vanished!`);
+                logger.cmds(`>${this.name} | ${sender.username} was vanished!`);
             })
             .catch(err => {
                 if (err === 'bad_timeout_mod') {
                     chat(channel, 'Try /unmod first. Okayge');
                     return;
                 }
-                logger.commande(`${sender.username} couldn't be vanished!`, err);
+                logger.cmde(`${sender.username} couldn't be vanished!`, err);
             });
     }
 };

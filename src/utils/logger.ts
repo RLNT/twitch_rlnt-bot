@@ -3,8 +3,9 @@ import { LoggerConfiguration, Signale, SignaleConstructorOptions } from 'lazy-si
 type CustomLogger =
     | 'await'
     | 'blank'
-    | 'command'
-    | 'commande'
+    | 'cmd'
+    | 'cmde'
+    | 'cmds'
     | 'complete'
     | 'debug'
     | 'done'
@@ -78,6 +79,13 @@ export function createLogger(): Signale<CustomLogger> {
         logLevel: 'info'
     };
 
+    const typeCommandS: LoggerConfiguration = {
+        badge: '~',
+        color: 'green',
+        label: 'cmd',
+        logLevel: 'info'
+    };
+
     const options: SignaleConstructorOptions<CustomLogger> = {
         types: {
             info: typeInfo,
@@ -85,8 +93,9 @@ export function createLogger(): Signale<CustomLogger> {
             note: typeNote,
             blank: typeBlank,
             done: typeDone,
-            command: typeCommand,
-            commande: typeCommandE
+            cmd: typeCommand,
+            cmde: typeCommandE,
+            cmds: typeCommandS
         }
     };
 

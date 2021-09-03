@@ -14,7 +14,7 @@ export const command: Command = {
             return;
         }
         chat(channel, 'Restarting...');
-        logger.command(`>${this.name} | ${sender.username} restarted the bot!`);
+        logger.cmds(`>${this.name} | ${sender.username} restarted the bot!`);
 
         // save the origin channel to the config to send a message after the restart
         config.persistent.restartOrigin = channel;

@@ -54,11 +54,11 @@ export const command: Command = {
                 config.commands[command]!.whitelist!.push(user);
                 await writeConfig();
                 chat(channel, `${user} was added to the ${command} whitelist!`);
-                logger.command(`>${this.name} | ${user} was added to the ${command} whitelist!`);
+                logger.cmds(`>${this.name} | ${user} was added to the ${command} whitelist!`);
                 break;
             case 'remove':
                 if (!user) return;
-                index = whitelist.indexOf(user);
+                index = whitelist.map(elem => elem.toLowerCase()).indexOf(user.toLowerCase());
                 if (index === -1) {
                     chat(channel, `${user} is not whitelisted!`);
                     return;
@@ -68,10 +68,10 @@ export const command: Command = {
                 config.commands[command]!.whitelist! = whitelist;
                 await writeConfig();
                 chat(channel, `${user} was removed from the ${command} whitelist!`);
-                logger.command(`>${this.name} | ${user} was removed from the ${command} whitelist!`);
+                logger.cmds(`>${this.name} | ${user} was removed from the ${command} whitelist!`);
                 break;
             case 'list':
-                chat(channel, `${command} whitelist: ${whitelist.join(', ')}`);
+                chat(channel, `${command}-whitelist: ${whitelist.join(', ')}`);
                 break;
             default:
                 chat(channel, `Invalid action! Try ${config.general.prefix}help ${this.name}`);

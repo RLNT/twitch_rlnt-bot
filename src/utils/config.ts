@@ -27,6 +27,7 @@ type Config = {
     };
     commands?: {
         readonly album?: CommandConfig;
+        readonly exec?: CommandConfig;
         readonly help?: CommandConfig;
         imgur?: CommandConfig;
         readonly info?: CommandConfig;
