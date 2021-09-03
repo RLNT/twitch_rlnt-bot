@@ -87,6 +87,9 @@ async function formDate(day: string | undefined, month: string | undefined, year
             resolve(`${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`);
         } else {
             if (parseInt(day) > 31 || parseInt(month) > 12) return reject();
+            if (day.length === 1) day = `0${day}`;
+            if (month.length === 1) month = `0${month}`;
+            if (year.length === 2) year = `20${year}`;
             resolve(`${day}.${month}.${year}`);
         }
     });
