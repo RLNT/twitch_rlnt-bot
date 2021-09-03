@@ -19,6 +19,7 @@ const commands = new Collection<string, Command>();
 const cooldowns = new Collection<string, Collection<string, number>>();
 const commandList = [
     'album',
+    'exec',
     'help',
     'imgur',
     'info',
@@ -99,8 +100,14 @@ export async function handleCommand(channel: string, sender: ChatUserstate, msg:
         return;
     }
     if (command.modRequired && !client.isMod(channel, client.getUsername())) {
-        chat(channel, 'This command is only available if the bot is a moderator of the channel!');
-        logger.command(`${channel} | ${sender.username} tried using mod-only command ${commandName}!`);
+        chat(channel, [
+            'This command is only available if the bot is a moderator of the channel!',
+            'If you just modded the bot, please wait a bit until trying again.'
+        ]);
+        logger.command(
+            `${channel} | ${sender.username} tried using mod-only command ${commandName}`,
+            `but the bot is no mod!`
+        );
         return;
     }
 
