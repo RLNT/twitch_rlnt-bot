@@ -23,6 +23,6 @@ export const command: Command = {
 
         if (!args.startsWith('/')) args = `/${args}`;
         client.say(channel, args);
-        logger.command(`>${this.name} | Message was executed!`);
+        logger.cmds(`>${this.name} | Message was executed!`);
     }
 };

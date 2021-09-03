@@ -91,12 +91,12 @@ export async function handleCommand(channel: string, sender: ChatUserstate, msg:
     // cancel the command under certain conditions
     if (!command) {
         chat(channel, 'This command does not exist!');
-        logger.command(`${channel} | ${sender.username} tried using unrecognized command ${commandName}!`);
+        logger.cmd(`${channel} | ${sender.username} tried using unrecognized command ${commandName}!`);
         return;
     }
     if (!commandEnabled(command.name)) {
         chat(channel, 'This command is currently disabled!');
-        logger.command(`${channel} | ${sender.username} tried using disabled command ${commandName}!`);
+        logger.cmd(`${channel} | ${sender.username} tried using disabled command ${commandName}!`);
         return;
     }
     if (command.modRequired && !client.isMod(channel, client.getUsername())) {
@@ -104,7 +104,7 @@ export async function handleCommand(channel: string, sender: ChatUserstate, msg:
             'This command is only available if the bot is a moderator of the channel!',
             'If you just modded the bot, please wait a bit until trying again.'
         ]);
-        logger.command(
+        logger.cmd(
             `${channel} | ${sender.username} tried using mod-only command ${commandName}`,
             `but the bot is no mod!`
         );
@@ -132,7 +132,7 @@ export async function handleCommand(channel: string, sender: ChatUserstate, msg:
     if (config.logging?.commands) {
         let logMessage = `${channel} | ${sender['display-name']} used the command: ${commandName}`;
         if (args) logMessage += ` | Args: ${args}`;
-        logger.command(logMessage);
+        logger.cmd(logMessage);
     }
 
     // execute the command

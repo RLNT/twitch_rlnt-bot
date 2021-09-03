@@ -37,13 +37,13 @@ export const command: Command = {
             .join(args)
             .then(() => {
                 chat(channel, `Successfully joined ${args}!`);
-                logger.command(`>${this.name} | Joined channel ${args}!`);
+                logger.cmds(`>${this.name} | Joined channel ${args}!`);
                 config.general.channels.push(args);
                 writeConfig();
             })
             .catch(err => {
                 chat(channel, `Error joining channel ${args}! | Reason: invalid channel`);
-                logger.commande(`>${this.name} | Channel ${args} couldn't be joined!`, err);
+                logger.cmde(`>${this.name} | Channel ${args} couldn't be joined!`, err);
             });
     }
 };

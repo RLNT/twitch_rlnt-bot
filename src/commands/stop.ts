@@ -13,7 +13,7 @@ export const command: Command = {
             return;
         }
         chat(channel, 'Stopping...');
-        logger.command(`>${this.name} | ${sender.username} stopped the bot!`);
+        logger.cmds(`>${this.name} | ${sender.username} stopped the bot!`);
         // stop the process with an error code so systemd does not restart it
         process.exit(1);
     }

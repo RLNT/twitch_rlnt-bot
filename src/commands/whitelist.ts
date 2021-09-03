@@ -54,7 +54,7 @@ export const command: Command = {
                 config.commands[command]!.whitelist!.push(user);
                 await writeConfig();
                 chat(channel, `${user} was added to the ${command} whitelist!`);
-                logger.command(`>${this.name} | ${user} was added to the ${command} whitelist!`);
+                logger.cmds(`>${this.name} | ${user} was added to the ${command} whitelist!`);
                 break;
             case 'remove':
                 if (!user) return;
@@ -68,7 +68,7 @@ export const command: Command = {
                 config.commands[command]!.whitelist! = whitelist;
                 await writeConfig();
                 chat(channel, `${user} was removed from the ${command} whitelist!`);
-                logger.command(`>${this.name} | ${user} was removed from the ${command} whitelist!`);
+                logger.cmds(`>${this.name} | ${user} was removed from the ${command} whitelist!`);
                 break;
             case 'list':
                 chat(channel, `${command}-whitelist: ${whitelist.join(', ')}`);

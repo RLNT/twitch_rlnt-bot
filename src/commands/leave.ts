@@ -21,11 +21,11 @@ export const command: Command = {
             client
                 .part(channel)
                 .then(() => {
-                    logger.command(`>${this.name} | Left channel ${channel.slice(1)}!`);
+                    logger.cmds(`>${this.name} | Left channel ${channel.slice(1)}!`);
                 })
                 .catch(err => {
                     chat(channel, `Error leaving this channel! | Reason: ${err}`);
-                    logger.commande(`>${this.name} | Channel ${channel.slice(1)} couldn't be left!`, err);
+                    logger.cmde(`>${this.name} | Channel ${channel.slice(1)} couldn't be left!`, err);
                 });
             return;
         }
@@ -42,13 +42,13 @@ export const command: Command = {
             .part(args)
             .then(() => {
                 chat(channel, `Successfully left ${args}!`);
-                logger.command(`>${this.name} | Left channel ${args}!`);
+                logger.cmds(`>${this.name} | Left channel ${args}!`);
                 config.general.channels.splice(config.general.channels.indexOf(args), 1);
                 writeConfig();
             })
             .catch(err => {
                 chat(channel, `Error leaving channel ${args}! | Reason: ${err}`);
-                logger.commande(`>${this.name} | Channel ${args} couldn't be left!`, err);
+                logger.cmde(`>${this.name} | Channel ${args} couldn't be left!`, err);
             });
     }
 };
