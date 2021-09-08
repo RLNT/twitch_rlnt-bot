@@ -9,33 +9,30 @@ env:
 jobs:
   check:
     name: Lint & Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [15]
     steps:
       - name: clone repository
         uses: actions/checkout@v2
+
+      - name: setup NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: cache pnpm
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.0.2
           run_install: true
-
-      - name: setup NodeJS
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: '14'
-          cache: pnpm
-
-      - name: cache pnpm modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-
-
-      - name: install dependencies
-        run: pnpm install
 
       - name: check Prettier format
         run: pnpx pretty-quick --check --verbose
@@ -48,38 +45,32 @@ jobs:
 
   publish:
     name: Publish
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [15]
     needs: check
     if: startsWith(github.ref, 'refs/tags/')
     steps:
-      - name: setup envar
-        run: echo RELEASE_NAME="$MOD_NAME-${GITHUB_REF##*/}" >> $GITHUB_ENV
-
       - name: clone repository
         uses: actions/checkout@v2
+
+      - name: setup NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: cache pnpm
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.0.2
           run_install: true
-
-      - name: setup NodeJS
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: '14'
-          cache: pnpm
-
-      - name: cache pnpm modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-
-
-      - name: install dependencies
-        run: pnpm install --prod
 
       - name: build the executables
         run: pnpm run build
