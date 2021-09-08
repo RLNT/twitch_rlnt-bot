@@ -18,7 +18,8 @@ const config: Configuration = {
     devtool: false,
     externals: {
         bufferutil: 'bufferutil',
-        'utf-8-validate': 'utf-8-validate'
+        'utf-8-validate': 'utf-8-validate',
+        'stream/web': 'stream/web'
     },
     module: {
         rules: [

@@ -18,6 +18,13 @@ export async function clientRegister(): Promise<void> {
             identity: {
                 username: config.login.username,
                 password: config.login.token
+            },
+            logger: {
+                info: (): void => {
+                    /* ignore */
+                },
+                warn: (msg: string): void => logger.warn(msg),
+                error: (msg: string): void => logger.error(msg)
             }
         });
     } catch (err) {

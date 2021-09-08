@@ -26,19 +26,6 @@ type Config = {
         refresh_token?: string;
     };
     commands?: {
-        readonly album?: CommandConfig;
-        readonly exec?: CommandConfig;
-        readonly help?: CommandConfig;
-        imgur?: CommandConfig;
-        readonly info?: CommandConfig;
-        readonly join?: CommandConfig;
-        readonly leave?: CommandConfig;
-        readonly ping?: CommandConfig;
-        readonly reload?: CommandConfig;
-        readonly restart?: CommandConfig;
-        readonly stop?: CommandConfig;
-        readonly vanish?: CommandConfig;
-        readonly whitelist?: CommandConfig;
         [command: string]: CommandConfig | undefined;
     };
     persistent: {

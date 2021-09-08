@@ -17,21 +17,6 @@ export type Command = {
 
 const commands = new Collection<string, Command>();
 const cooldowns = new Collection<string, Collection<string, number>>();
-const commandList = [
-    'album',
-    'exec',
-    'help',
-    'imgur',
-    'info',
-    'join',
-    'leave',
-    'ping',
-    'reload',
-    'restart',
-    'stop',
-    'vanish',
-    'whitelist'
-];
 
 /**
  * Loads commands dynamically from the command directory.
@@ -42,14 +27,13 @@ export async function loadCommands(): Promise<void> {
     logger.info('Loading commands...');
 
     // load all command files from the command directory
-    // temporarily disabled dynamic command loading because exe compiling is not compatible
-    // const commandFiles = readdirSync(`${__dirname}/../commands`).filter(file => file.endsWith('.ts'));
+    const commandFiles = require.context('@commands', true, /\.ts$/);
 
     // register each command file to the available commands
-    commandList.forEach(file => {
+    commandFiles.keys().forEach(file => {
         try {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
-            const { command } = require(`${__dirname}/../commands/${file}`) as { command: Command };
+            const { command } = require(`@commands/${file.replace('./', '')}`) as { command: Command };
             if (!commandEnabled(command.name)) return;
             commands.set(command.name, command);
             logger.note(`Loaded command: ${command.name}`);
@@ -64,7 +48,7 @@ export async function loadCommands(): Promise<void> {
 /** Reloads commands. */
 export async function reloadCommands(): Promise<void> {
     commands.forEach(command => {
-        delete require.cache[require.resolve(`${__dirname}/../commands/${command.name}`)];
+        delete require.cache[require.resolve(`@commands/${command.name}`)];
     });
     commands.clear();
     await loadCommands();

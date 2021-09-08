@@ -74,8 +74,8 @@ async function authenticate(): Promise<void> {
 async function disableModule(): Promise<void> {
     logger.warn('No Imgur access token found! Deactivating Imgur module and command.');
     if (!config.commands) config.commands = {};
-    if (!config.commands.imgur) config.commands.imgur = {};
-    config.commands.imgur.enabled = false;
+    if (!config.commands['imgur']) config.commands['imgur'] = {};
+    config.commands['imgur'].enabled = false;
     await reloadCommands();
 }
 

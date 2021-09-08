@@ -5,6 +5,10 @@ import { config, loadConfig } from '@utils/config';
 import fetch from 'node-fetch';
 import { ChatUserstate } from 'tmi.js';
 
+type GitHubResponse = {
+    tag_name: string;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const version = require('../../package.json').version;
 
@@ -130,7 +134,9 @@ export function getVersion(): string {
 export async function getLatestVersion(): Promise<string> {
     return await fetch('https://api.github.com/repos/RLNT/twitch_rlnt-bot/releases/latest')
         .then(res => res.json())
-        .then(res => res.tag_name);
+        .then(res => {
+            return (res as GitHubResponse).tag_name;
+        });
 }
 
 /**
