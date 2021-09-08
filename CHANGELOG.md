@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning].
 - /
 
 
+## [1.6.0] - 2021-09-08
+
+### Added
+- suicide command
+  - timeouts the command sender for 24 hours
+
+### Changed
+- switch to pnpm
+
+### Fixed
+- unformatted error logs thrown by TMI
+- dynamic command loading
+
+
 ## [1.5.0] - 2021-09-03
 
 ### Added
