@@ -1,10 +1,17 @@
-# **RLNT Bot** [![Workflow Status][workflow_status_badge]][workflow_status_link] [![Total Downloads][total_downloads_badge]][total_downloads_link] [![License][license_badge]][license]
+<div align="center">
+<h1>RLNT Bot</h1>
 
-> A [Twitch] chat bot for private use with utility functions implemented on demand.
+A [Twitch] chat bot for private use with utility functions implemented on demand.
 
-- [Discord]
+[![Version][version_badge]][version_link]
+[![Total Downloads][total_downloads_badge]][total_downloads_link]
+[![Workflow Status][workflow_status_badge]][workflow_status_link]
+[![License][license_badge]][license]
+[![Style][style_badge]][style_link]
 
----
+[Discord]
+
+</div>
 
 ## **📑 Overview**
 This is a bot for [Twitch].<br>
@@ -42,11 +49,15 @@ This project is licensed under the [MIT][license] license.
 
 
 <!-- Badges -->
+[version_badge]: https://img.shields.io/github/v/release/RLNT/twitch_rlnt-bot?style=flat-square
+[version_link]: https://github.com/RLNT/twitch_rlnt-bot/releases/latest
 [workflow_status_badge]: https://img.shields.io/github/workflow/status/RLNT/twitch_rlnt-bot/CI?style=flat-square
 [workflow_status_link]: https://github.com/RLNT/twitch_rlnt-bot/actions/workflows/main.yml
 [total_downloads_badge]: https://img.shields.io/github/downloads/RLNT/twitch_rlnt-bot/total?style=flat-square
 [total_downloads_link]: https://github.com/RLNT/twitch_rlnt-bot/releases/latest
 [license_badge]: https://img.shields.io/github/license/RLNT/twitch_rlnt-bot?style=flat-square
+[style_badge]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square
+[style_link]: https://github.com/prettier/prettier
 
 <!-- Links -->
 [twitch]: https://www.twitch.tv/
