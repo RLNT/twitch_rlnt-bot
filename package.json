@@ -28,6 +28,7 @@
   "dependencies": {
     "@iarna/toml": "^2.2.5",
     "@rmp135/imgur": "^0.6.0",
+    "husky": "^7.0.2",
     "lazy-signale": "^2.1.1",
     "node-fetch": "^3.0.0",
     "promptly": "^3.2.0",
@@ -46,7 +47,6 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsdoc": "^36.1.0",
     "eslint-plugin-regexp": "^1.1.0",
-    "husky": "^7.0.2",
     "pkg": "^5.3.1",
     "prettier": "^2.3.2",
     "prettier-plugin-jsdoc": "^0.3.24",
