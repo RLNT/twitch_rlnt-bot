@@ -52,6 +52,9 @@ jobs:
     needs: check
     if: startsWith(github.ref, 'refs/tags/')
     steps:
+      - name: setup envar
+        run: echo RELEASE_NAME="$MOD_NAME-${GITHUB_REF##*/}" >> $GITHUB_ENV
+
       - name: clone repository
         uses: actions/checkout@v2
 
