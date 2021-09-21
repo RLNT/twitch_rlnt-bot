@@ -2,7 +2,7 @@ import { logger } from '@/startup';
 import { client } from '@internals/clienthandler';
 import { Command } from '@internals/commandhandler';
 import { config, writeConfig } from '@utils/config';
-import { chat, isWhitelisted } from '@utils/helpers';
+import { chat, isInChannel, isWhitelisted } from '@utils/helpers';
 import { ChatUserstate } from 'tmi.js';
 
 export const command: Command = {
@@ -33,7 +33,7 @@ export const command: Command = {
             chat(channel, 'Invalid channel name!');
             return;
         }
-        if (!config.general.channels.includes(args)) {
+        if (!isInChannel(args)) {
             chat(channel, `I'm not in channel ${args}!`);
             return;
         }
@@ -43,7 +43,10 @@ export const command: Command = {
             .then(() => {
                 chat(channel, `Successfully left ${args}!`);
                 logger.cmds(`>${this.name} | Left channel ${args}!`);
-                config.general.channels.splice(config.general.channels.indexOf(args), 1);
+                config.general.channels.splice(
+                    config.general.channels.indexOf(args.startsWith('#') ? args : `#${args}`),
+                    1
+                );
                 writeConfig();
             })
             .catch(err => {

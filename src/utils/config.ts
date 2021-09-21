@@ -81,8 +81,9 @@ export async function writeConfig(): Promise<void> {
     }
 
     config.general.channels = config.general.channels.map(channel => {
-        if (!channel.startsWith('#')) return channel;
-        return channel.slice(1);
+        channel = channel.toLowerCase();
+        if (channel.startsWith('#')) return channel;
+        return `#${channel}`;
     });
 
     writeFileSync(directory, TOML.stringify(<TOML.JsonMap>config), 'utf8');

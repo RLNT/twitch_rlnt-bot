@@ -10,7 +10,8 @@
     # the prefix for commands
     prefix = "!"
     # the Twitch channels to join
-    channels = ["myawesomechannel"]
+    # to avoid issues, prefix every channel with a #
+    channels = ["#myawesomechannel"]
     # whether to reconnect to Twitch when disconnected
     auto_reconnect = true
     # whether the bot should chat in colored messages with /me
