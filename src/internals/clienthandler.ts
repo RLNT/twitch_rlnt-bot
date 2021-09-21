@@ -48,6 +48,28 @@ export async function registerEvents(): Promise<void> {
         // ignore the bot itself
         if (isSelf) return;
 
+        // peter filter
+        if (config.persistent.peter && sender.username === 'TheSteamraven') {
+            client
+                .timeout(channel, sender.username, 60, 'Filter')
+                .then(() => {
+                    logger.cmds(`>peter | ${sender.username} was filtered!`);
+                })
+                .catch(err => {
+                    if (err === 'bad_timeout_mod') {
+                        chat(channel, [
+                            "Peter couldn't be filtered since they are a moderator.",
+                            'Deactivated Peter-Filter! Sadge'
+                        ]);
+                        config.persistent.peter = false;
+                        writeConfig();
+                        return;
+                    }
+                    logger.cmde(`${sender.username} couldn't be filtered!`, err);
+                });
+            return;
+        }
+
         // pass the handling to the command handler if the message starts with the command prefix
         if (msg.startsWith(config.general.prefix)) {
             handleCommand(channel, sender, msg.trim());

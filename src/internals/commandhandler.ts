@@ -65,7 +65,7 @@ export async function reloadCommands(): Promise<void> {
  * @param msg The raw message sent by the user
  */
 export async function handleCommand(channel: string, sender: ChatUserstate, msg: string): Promise<void> {
-    const commandRegex = new RegExp(`^${config.general.prefix}([a-zA-Z\\d]+)(?:\\W+)?(.*)?`);
+    const commandRegex = new RegExp(`^${config.general.prefix}([a-zA-Z\\d]+)\\W?(.*)?`);
     const [, commandName, args] = msg.match(commandRegex) || [];
     if (!commandName || !sender.username) return;
 

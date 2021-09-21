@@ -30,6 +30,7 @@ type Config = {
     };
     persistent: {
         restartOrigin: string;
+        peter: boolean;
     };
 };
 

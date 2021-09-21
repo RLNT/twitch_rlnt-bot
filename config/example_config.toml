@@ -49,6 +49,10 @@
     # the users that can use the leave command
     whitelist = ["awesomeuser"]
 
+[commands.peter]
+    # the users that can use the peter command
+    whitelist = ["awesomeuser"]
+
 [commands.reload]
     # the users that can use the reload command
     whitelist = ["awesomeuser"]
@@ -68,3 +72,4 @@
 # This is used to store some persistent data for the bot and it's automated.
 [persistent]
     restartOrigin = ""
+    peter = false
