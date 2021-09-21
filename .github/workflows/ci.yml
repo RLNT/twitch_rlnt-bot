@@ -3,35 +3,34 @@ name: CI
 on: [push, pull_request]
 
 env:
-  MOD_NAME: RLNTBot
+  FILE_NAME: RLNTBot
   RELEASE_FILES: config LICENSE
+  NODE_VERSION: 14.17.6
+  PNPM_VERSION: 6.15.1
 
 jobs:
   check:
     name: Lint & Build
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        node-version: [14]
     steps:
       - name: clone repository
         uses: actions/checkout@v2
 
-      - name: setup NodeJS ${{ matrix.node-version }}
+      - name: setup NodeJS ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v2.2.0
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: cache pnpm
         uses: actions/cache@v2
         with:
           path: ~/.pnpm-store
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-node${{ env.NODE_VERSION }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.0.2
+          version: ${{ env.PNPM_VERSION }}
           run_install: true
 
       - name: check Prettier format
@@ -46,33 +45,30 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        node-version: [14]
     needs: check
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: setup envar
-        run: echo RELEASE_NAME="$MOD_NAME-${GITHUB_REF##*/}" >> $GITHUB_ENV
+        run: echo RELEASE_NAME="$FILE_NAME-${GITHUB_REF##*/}" >> $GITHUB_ENV
 
       - name: clone repository
         uses: actions/checkout@v2
 
-      - name: setup NodeJS ${{ matrix.node-version }}
+      - name: setup NodeJS ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v2.2.0
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: cache pnpm
         uses: actions/cache@v2
         with:
           path: ~/.pnpm-store
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-node${{ env.NODE_VERSION }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.0.2
+          version: ${{ env.PNPM_VERSION }}
           run_install: true
 
       - name: build the executables
