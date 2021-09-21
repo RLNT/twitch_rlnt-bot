@@ -1,6 +1,6 @@
 {
   "name": "rlnt-bot",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "A Twitch chat bot for private use with utility functions implemented on demand.",
   "homepage": "https://github.com/RLNT/twitch_rlnt-bot",
   "bugs": {
@@ -35,28 +35,28 @@
     "tmi.js": "^1.8.5"
   },
   "devDependencies": {
-    "@types/node": "^16.7.13",
+    "@types/node": "^16.9.4",
     "@types/promptly": "^3.0.2",
     "@types/tmi.js": "^1.7.2",
     "@types/webpack": "^5.28.0",
     "@types/webpack-env": "^1.16.2",
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsdoc": "^36.1.0",
     "eslint-plugin-regexp": "^1.1.0",
-    "pkg": "^5.3.1",
-    "prettier": "^2.3.2",
+    "pkg": "5.3.2",
+    "prettier": "^2.4.1",
     "prettier-plugin-jsdoc": "^0.3.24",
     "prettier-plugin-organize-imports": "^2.3.3",
-    "prettier-plugin-packagejson": "^2.2.11",
+    "prettier-plugin-packagejson": "^2.2.12",
     "pretty-quick": "^3.1.1",
-    "ts-loader": "^9.2.5",
+    "ts-loader": "^9.2.6",
     "ts-node": "^10.2.1",
-    "typescript": "^4.4.2",
-    "webpack": "^5.52.0",
+    "typescript": "^4.4.3",
+    "webpack": "^5.53.0",
     "webpack-cli": "^4.8.0"
   }
 }

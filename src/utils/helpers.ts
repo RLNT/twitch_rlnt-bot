@@ -154,3 +154,19 @@ export function commandEnabled(command: string): boolean {
     if (!commandConfig) return true;
     return typeof commandConfig.enabled === 'undefined' || commandConfig.enabled;
 }
+
+/**
+ * Checks if the bot is connected to a channel.
+ *
+ * @param channel The channel to check
+ * @returns True if the bot is connected to the channel, false otherwise
+ */
+export function isInChannel(channel: string): boolean {
+    const joinedChannels = client.getChannels().map(c => {
+        if (c.startsWith('#')) c = c.slice(1);
+        return c.toLowerCase();
+    });
+
+    if (channel.startsWith('#')) channel = channel.slice(1);
+    return joinedChannels.includes(channel.toLowerCase());
+}
