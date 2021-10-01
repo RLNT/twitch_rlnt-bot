@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning].
   - filters chat commands of TheSteamraven
 - target ability for exec command
 
+### Fixed
+- command case sensitivity
+
 
 ## [1.6.0] - 2021-09-08
 
