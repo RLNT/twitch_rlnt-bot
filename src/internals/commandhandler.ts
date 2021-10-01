@@ -6,7 +6,7 @@ import { ChatUserstate } from 'tmi.js';
 
 /** The command type representing the default structure of a command. */
 export type Command = {
-    readonly name: string;
+    name: string;
     readonly description: string;
     readonly modRequired: boolean;
     readonly cooldown?: number;
@@ -34,6 +34,7 @@ export async function loadCommands(): Promise<void> {
         try {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const { command } = require(`@commands/${file.replace('./', '')}`) as { command: Command };
+            command.name = command.name.toLowerCase();
             if (!commandEnabled(command.name)) return;
             commands.set(command.name, command);
             logger.note(`Loaded command: ${command.name}`);
@@ -135,10 +136,10 @@ export async function handleCommand(channel: string, sender: ChatUserstate, msg:
  */
 export function getCommandByName(name: string): Command | undefined {
     return (
-        commands.get(name) ||
+        commands.get(name.toLowerCase()) ||
         commands.find(cmd => {
             if (!cmd.aliases) return false;
-            return cmd.aliases.includes(name);
+            return cmd.aliases.includes(name.toLowerCase());
         })
     );
 }

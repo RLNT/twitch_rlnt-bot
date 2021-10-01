@@ -150,7 +150,7 @@ export async function getLatestVersion(): Promise<string> {
  */
 export function commandEnabled(command: string): boolean {
     if (!config.commands) return true;
-    const commandConfig = config.commands[command];
+    const commandConfig = config.commands[command.toLowerCase()];
     if (!commandConfig) return true;
     return typeof commandConfig.enabled === 'undefined' || commandConfig.enabled;
 }
