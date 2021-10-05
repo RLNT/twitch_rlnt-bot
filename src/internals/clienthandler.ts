@@ -49,7 +49,7 @@ export async function registerEvents(): Promise<void> {
         if (isSelf) return;
 
         // peter filter
-        if (config.persistent.peter && sender.username === 'TheSteamraven') {
+        if (config.persistent.peter && sender.username?.toLowerCase() === 'thesteamraven') {
             client
                 .timeout(channel, sender.username, 60, 'Filter')
                 .then(() => {
